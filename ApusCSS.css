@@ -1,4 +1,19 @@
 @font-face {
+    font-family: 'Solomon-Sans-Light';
+    src: url('fonts/Solomon-Sans-Light.eot?#iefix') format('embedded-opentype'),  url('fonts/Solomon-Sans-Light.otf')  format('opentype'),
+    url('fonts/Solomon-Sans-Light.woff') format('woff'), url('fonts/Solomon-Sans-Light.ttf')  format('truetype'), url('fonts/Solomon-Sans-Light.svg#Solomon-Sans-Light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MuseoSansCyrl-300';
+    src: url('fonts/MuseoSansCyrl-300.eot?#iefix') format('embedded-opentype'),  url('fonts/MuseoSansCyrl-300.woff') format('woff'), url('fonts/MuseoSansCyrl-300.ttf')  format('truetype'), url('fonts/MuseoSansCyrl-300.svg#MuseoSansCyrl-300') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'MuseoSansCyrl-500';
     src: url('fonts/MuseoSansCyrl-500.eot?#iefix') format('embedded-opentype'), url('fonts/MuseoSansCyrl-500.otf') format('opentype'),
     url('fonts/MuseoSansCyrl-500.woff') format('woff'), url('fonts/MuseoSansCyrl-500.ttf') format('truetype'), url('fonts/MuseoSansCyrl-500.svg#MuseoSansCyrl-500') format('svg');
@@ -59,82 +74,119 @@ table {
 body {
     width: 1202px;
     font-family: 'MuseoSansCyrl-500';
+    margin: 0 auto;
 }
 
-header {
+.header {
     width: 1202px;
     height: 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-right: 24px;
+    box-sizing: border-box;
 }
 
 .header__logo {
+    position: relative;
     width: 100px;
     height: 100px;
-    background-color: black;
-    position: relative;
-    background: rgba(54, 25, 25, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .logo {
+    display: block;
+    position: absolute;
     width: 52px;
     height: 60px;
-    display: block;
-    opacity: unset;
-    position: absolute;
-    top: 20px;
-    left: 24px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
-a {
-    text-decoration: none;
-}
-
-.menu_item {
-    width: 520px;
-    height: 17px;
+.menu__item {
     opacity: 0.5;
     font-size: 18px;
-    font-weight: 300;
+    font-family: 'MuseoSansCyrl-300';
     text-align: right;
     color: rgba(0, 0, 0, 0.5);
     color: black;
     box-sizing: border-box;
+    vertical-align: middle;
+    text-decoration: none;
 }
 
-.menu_item:not(:last-child) {
-    margin-right: 53px;
+.menu__item:not(:last-child) {
+    margin-right: 44px;
 }
 
-.menu_item:last-child {
+.menu__item:last-child {
     margin-right: 24px;
 }
 
-.menu_item:hover {
+.menu__item:hover {
     color: orange;
 }
 
-span {
+.menu__hamburger {
+    position: relative;
     width: 38px;
+    height: 28px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+    cursor: pointer;
+}
+
+.menu__hamburger div {
+    position: absolute;
     height: 2px;
+    width: 38px;
     background-color: #180178;
+    opacity: 0.5;
+    transition: all 0.2s ease
+}
+
+.menu__hamburger div:nth-child(1) {
+    top: 0;
+    transform-origin: center top;
+}
+
+.menu__hamburger div:nth-child(2) {
+    top: 13px;
+}
+
+.menu__hamburger div:nth-child(3) {
+    bottom: 0;
+    transform-origin: center bottom;
+}
+
+.menu__hamburger.expanded div:nth-child(1) {
+    transform: rotate(45deg) translateY(-50%);
+    top: 50%;
+}
+
+.menu__hamburger.expanded div:nth-child(2) {
+    display: none;
+}
+
+.menu__hamburger.expanded div:nth-child(3) {
+    transform: rotate(-45deg) translateY(-50%);
+    top: 50%;
+    bottom: auto;
 }
 
 .container {
+    box-sizing: border-box;
+    padding: 90px 114px 104px;
     background-color: #180178;
-    height: 1158px;
 }
 
-h1 {
-    width: 196px;
-    height: 43px;
+.title {
     font-size: 60px;
-    font-weight: 300;
     text-align: left;
     color: white;
-    padding-top: 90px;
-    padding-left: 117px;
+    font-family: 'Solomon-Sans-Light';
 
 }
 
@@ -142,8 +194,6 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-left: 117px;
-    margin-right: 114px;
     margin-top: 89px;
 }
 
@@ -151,7 +201,7 @@ h1 {
     margin-top: 52px;
 }
 
-.list__item_discription {
+.list__content {
     width: 290px;
     height: 160px;
     background-color: white;
@@ -160,31 +210,32 @@ h1 {
 
 }
 
-h3 {
+.list__title {
     font-size: 20px;
     text-align: left;
     color: #00dceb;
+    font-family: 'MuseoSansCyrl-300';
 }
 
-p.discription {
+.list__description {
     font-size: 16px;
     padding-top: 20px;
+    font-family: 'MuseoSansCyrl-300';
 }
 
 .photo {
     width: 290px;
     height: 230px;
+    display: block;
 }
 
 .footer {
-    height: 500px;
     background-color: #0e0047;
-
+    padding: 54px 114px 70px;
+    box-sizing: border-box;
 }
 
 .footer__start {
-    padding-top: 54px;
-    padding-left: 114px;
     font-size: 16px;
     font-weight: 300;
     font-style: normal;
@@ -200,7 +251,7 @@ p.discription {
 }
 
 .footer_menu {
-    font-family: MuseoSansCyrl;
+    font-family: 'MuseoSansCyrl-300';
     font-size: 16px;
     font-weight: 300;
     font-style: normal;
@@ -209,36 +260,28 @@ p.discription {
     letter-spacing: normal;
     text-align: left;
     color: #00dceb;
-    padding-left: 76px;
-    padding-top: 49px;
-
-}
-
-a {
-    text-decoration: none;
-}
-
-.footer_menu:first-child {
-    padding-left: 114px;
 }
 
 .footer__middle {
-    display: inline-flex;
-
+    display: flex;
+    padding-top: 49px;
+    padding-bottom: 111px;
+    box-sizing: border-box;
 }
 
 .icons {
     display: flex;
+    margin-top: 26px;
 }
 
 .icon {
     color: #00dceb;
     height: 20px;
     box-sizing: border-box;
-    padding-left: 15px;
 }
 
-.icon:not(:first-child) {
+.icons li:not(:first-child) .icon {
+    padding-left: 15px;
 }
 
 .point {
@@ -258,23 +301,70 @@ a {
 
 }
 
-.footer__bottom_item {
-    display: inline-flex;
-    padding-top: 103px;
-    padding-left: 114px;
+/**
+* Footer
+*/
+.footer__logo {
+    display: flex;
+    align-items: center;
 }
 
-.footer__bottom_item_logo {
+.footer__logo-img {
+    display: block;
     width: 40px;
     height: 29px;
 }
 
-.footer__bottom_item:not(:first-child) {
+.footer__logo-text {
     padding-left: 25px;
     vertical-align: center;
     font-size: 16px;
     line-height: 1.75;
     letter-spacing: normal;
     text-align: left;
+    color: #ffffff;
+}
+
+.footer__logo-text span {
+    color: #41dc48;
+}
+
+
+/*
+* Nav
+*/
+.nav {
+
+}
+
+.nav + .nav {
+    margin-left: 76px;
+}
+
+
+.nav__link {
     color: #00dceb;
+    font-size: 16px;
+    line-height: 28px;
+    text-decoration: none;
+    font-family: 'MuseoSansCyrl-300';
+}
+
+
+.contacts {
+    display: flex;
+    margin-left: auto;
+}
+
+.contacts__icon {
+    margin-right: 28px;
+    width: 33px;
+    height: 38px;
+}
+
+.contacts__text {
+    font-size: 16px;
+    line-height: 28px;
+    color: #fff;
+    font-family: 'MuseoSansCyrl-300';
 }
